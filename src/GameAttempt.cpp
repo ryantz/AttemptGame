@@ -1,12 +1,10 @@
 ﻿// GameAttempt.cpp : Defines the entry point for the application.
 //
+#include <iostream>
 
-#include "GameAttempt.h"
 
-using namespace std;
-
-int main()
+int GameAttempt()
 {
-	cout << "Hello CMake." << endl;
+	std::cout << "Hello CMake." << std::endl;
 	return 0;
 }
