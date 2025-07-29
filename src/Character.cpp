@@ -1,21 +1,11 @@
 #include <iostream>
+#include "../include/Character.h"
 
-class Character {
-public:
-	void Equip() {
-		std::cout << "Weapon Equipped" << std::endl;
-	}
+Character::Character(int Health, int Mana, Faction Faction) :
+	mHealth{ Health }, mMana{ Mana }, mFaction{ Faction } {
+	std::cout << "Custom char created" << std::endl;
+}
 
-	void Attack() {
-		std::cout << "Attacked!" << std::endl;
-	}
-
-protected:
-	int mHealth;
-	int mMana;
-	int mSpecies;
-};
-
-class Orc : Character {};
-class Dragon : Character {};
-class Hero : Character {};
+void Attack(Character* target) {
+	std::cout << "attack" << std::endl;
+}

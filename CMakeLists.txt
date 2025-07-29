@@ -12,7 +12,7 @@ endif()
 project ("GameAttempt")
 
 # Add source to this project's executable.
-add_executable (GameAttempt "src/GameAttempt.cpp" "include/GameAttempt.h" "src/Character.cpp" "src/Weapon.cpp")
+add_executable (GameAttempt "src/GameAttempt.cpp" "include/GameAttempt.h" "src/Character.cpp" "src/Weapon.cpp" "src/main.cpp" "src/Inventory.cpp" "include/Weapon.h" "include/Inventory.h" "include/Character.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET GameAttempt PROPERTY CXX_STANDARD 20)
