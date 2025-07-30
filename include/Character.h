@@ -15,13 +15,15 @@ enum class Status {
     DEAD,
 };
 
+std::string  ConvertFactionToString(Faction Faction);
+
 class Character {
 public:
     Character() = default;
     Character(int Health, int Mana, Faction Faction);
     virtual ~Character() = default; // for polymorphism
 
-    virtual void OnAttacked();
+    virtual void OnAttacked(Character* Attacker);
 
     int GetHealth() const {
         return mHealth;
@@ -29,6 +31,10 @@ public:
 
     int GetMana() const {
         return mMana;
+    }
+
+    Faction GetFaction() const {
+        return mFaction;
     }
 
     Status GetStatus() const {
@@ -50,7 +56,7 @@ class Orc : public Character {
 public:
     Orc();
     
-    void OnAttacked() override;
+    void OnAttacked(Character* Target) override;
     void GoBerserk();
 };
 
@@ -58,7 +64,7 @@ class Dragon : public Character {
 public:
     Dragon();
 
-    void OnAttacked() override;
+    void OnAttacked(Character* Target) override;
     void DragonRage(Character* Target);
 };
 
@@ -66,10 +72,6 @@ class Hero : public Character {
 public:
     Hero();
 
-    void OnAttacked() override;
+    void OnAttacked(Character* Target) override;
     void HerosCalling(Character* Target);
 };
-
-void Attack(Character* Target);
-
-
