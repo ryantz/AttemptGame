@@ -66,8 +66,9 @@ void Orc::GoBerserk() {
 			<< GetHealth() << std::endl;
 }
 
-void Orc::OnAttacked(Character* Target) {
-	std::cout << "Attacking an Orc" << std::endl;
+void Orc::OnAttacked(Character* Attacker) {
+	std::cout << ConvertFactionToString(Attacker->GetFaction())
+		<< "is attacking an Orc" << std::endl;
 	if (GetHealth() == 10) {
 		GoBerserk();
 	}
@@ -82,10 +83,11 @@ void Dragon::DragonRage(Character* Target) {
 		DealDamage(Target, 35);
 }
 
-void Dragon::OnAttacked(Character* Target) {
-	std::cout << "Attacking a Dragon" << std::endl;
+void Dragon::OnAttacked(Character* Attacker) {
+	std::cout << ConvertFactionToString(Attacker->GetFaction()) 
+		<< "is attacking a Dragon" << std::endl;
 	if((GetHealth() % 20) == 0)	{
-		DragonRage(Target);
+		DragonRage(Attacker);
 		std::cout << "Dragon is using DragonRage!" << std::endl;
 	}
 }
@@ -95,10 +97,11 @@ Hero::Hero() : Character(100, 100, Faction::HUMAN) {
 	std::cout << "Hero created" << std::endl;
 }
 
-void Hero::OnAttacked(Character* Target) {
-	std::cout << "Attacking a Hero" << std::endl;
+void Hero::OnAttacked(Character* Attacker) {
+	std::cout << ConvertFactionToString(Attacker->GetFaction())
+		<< "is attacking a Hero" << std::endl;
 	if (GetHealth() == 50) {
-		HerosCalling(Target);
+		HerosCalling(Attacker);
 	}
 }
 

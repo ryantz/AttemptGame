@@ -56,7 +56,7 @@ class Orc : public Character {
 public:
     Orc();
     
-    void OnAttacked(Character* Target) override;
+    void OnAttacked(Character* Attacker) override;
     void GoBerserk();
 };
 
@@ -64,7 +64,7 @@ class Dragon : public Character {
 public:
     Dragon();
 
-    void OnAttacked(Character* Target) override;
+    void OnAttacked(Character* Attacker) override;
     void DragonRage(Character* Target);
 };
 
@@ -72,6 +72,6 @@ class Hero : public Character {
 public:
     Hero();
 
-    void OnAttacked(Character* Target) override;
+    void OnAttacked(Character* Attacker) override;
     void HerosCalling(Character* Target);
 };
