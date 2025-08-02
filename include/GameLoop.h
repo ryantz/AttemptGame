@@ -10,9 +10,5 @@ class GameLoop {
 public:
     GameLoop();
 	void Start();
-
-private:
-	std::unique_ptr<Hero> Player;
-	std::unique_ptr<Character> Enemy;
 };
 

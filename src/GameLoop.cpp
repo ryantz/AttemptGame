@@ -55,7 +55,7 @@ void GameLoop::Start() {
 			}
 			case 3: {
 				Player.Run(Enemy);
-				PlayerChoice = false;
+				inBattle = false; // run and break loop
 				std::cout << "Ran away successfully..ending game" << std::endl;
 				break;
 			}
