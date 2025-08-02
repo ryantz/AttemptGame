@@ -1,5 +1,6 @@
 #pragma once
 #include "CharacterStats.h"
+#include "Weapon.h"
 
 class Character {
 public:
@@ -61,4 +62,5 @@ public:
 
     void OnAttacked(Character* Attacker) override;
     void HerosCalling(Character* Target);
+    void Equip(Weapon* Weapon);
 };
