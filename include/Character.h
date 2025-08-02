@@ -19,8 +19,8 @@ std::string  ConvertFactionToString(Faction Faction);
 
 class Character {
 public:
-    Character() = default;
-    Character(int Health, int Mana, Faction Faction);
+    Character() = default; // for slime
+    Character(int Health, int Mana, int Level, int Exp, Faction Faction, Status mStatus); // for others
     virtual ~Character() = default; // for polymorphism
 
     virtual void OnAttacked(Character* Attacker);
@@ -48,6 +48,8 @@ public:
 protected:
     int mHealth{ 20 };
     int mMana{ 0 };
+    int mLevel{ 1 };
+    int mExp{ 3 };
     Faction mFaction{ Faction::SLIME };
     Status mStatus{ Status::ALIVE };
 };

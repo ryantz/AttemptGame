@@ -17,9 +17,13 @@ std::string  ConvertFactionToString(Faction Faction) {
     }
 }
 
+void Attack(Character* Target) {
+	
+}
+
 // base char
-Character::Character(int Health, int Mana, Faction Faction) :
-	mHealth{ Health }, mMana{ Mana }, mFaction{ Faction } {
+Character::Character(int Health, int Mana, int Level, int Exp, Faction Faction, Status Status) :
+	mHealth{ Health }, mMana{ Mana }, mLevel{ Level }, mExp{ Exp }, mFaction{ Faction }, mStatus{Status} {
 	std::cout << "Custom char created" << std::endl;
 }
 
@@ -52,11 +56,11 @@ void Character::DealDamage(Character* Target, int DamageDealt) {
 	}
 
 	Target->SetHealth(ReducedHealth);
-	Target->OnAttacked(Target);
+	Target->OnAttacked(this);
 }
 
 // Orc class member functions
-Orc::Orc() : Character(150, 30, Faction::ORC) {
+Orc::Orc() : Character(150, 30, 10, 300, Faction::ORC, Status::ALIVE) {
 	std::cout << "Orc created" << std::endl;
 }
 
@@ -69,13 +73,14 @@ void Orc::GoBerserk() {
 void Orc::OnAttacked(Character* Attacker) {
 	std::cout << ConvertFactionToString(Attacker->GetFaction())
 		<< "is attacking an Orc" << std::endl;
+
 	if (GetHealth() == 10) {
 		GoBerserk();
 	}
 }
 
 // Dragon class member functions
-Dragon::Dragon() : Character(300, 150, Faction::DRAGON) {
+Dragon::Dragon() : Character(300, 150, 20, 450, Faction::DRAGON, Status::ALIVE) {
 	std::cout << "Dragon created" << std::endl;
 }
 
@@ -86,6 +91,7 @@ void Dragon::DragonRage(Character* Target) {
 void Dragon::OnAttacked(Character* Attacker) {
 	std::cout << ConvertFactionToString(Attacker->GetFaction()) 
 		<< "is attacking a Dragon" << std::endl;
+
 	if((GetHealth() % 20) == 0)	{
 		DragonRage(Attacker);
 		std::cout << "Dragon is using DragonRage!" << std::endl;
@@ -93,13 +99,14 @@ void Dragon::OnAttacked(Character* Attacker) {
 }
 
 // Hero class member functions
-Hero::Hero() : Character(100, 100, Faction::HUMAN) {
+Hero::Hero() : Character(100, 100, 1, 0, Faction::HUMAN, Status::ALIVE) {
 	std::cout << "Hero created" << std::endl;
 }
 
 void Hero::OnAttacked(Character* Attacker) {
 	std::cout << ConvertFactionToString(Attacker->GetFaction())
-		<< "is attacking a Hero" << std::endl;
+		<< " is attacking a Hero" << std::endl;
+
 	if (GetHealth() == 50) {
 		HerosCalling(Attacker);
 	}
