@@ -2,6 +2,8 @@
 
 int main() {
 	GameLoop GameLoop;
-	GameLoop::start();
+
+	GameLoop.Start();
+
 	return 0;
 }

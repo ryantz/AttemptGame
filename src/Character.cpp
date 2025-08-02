@@ -46,7 +46,7 @@ void Character::DealDamage(Character* Target, int DamageDealt) {
 }
 
 // Orc class member functions
-Orc::Orc() : Character(OrcStats::HEALTH, OrcStats::MANA, OrcStats::LEVEL, OrcStats::BASIC_DAMAGE, OrcStats::EXP, OrcStats::FACTION, OrcStats::STATUS) {
+Orc::Orc() : Character(OrcStats::HEALTH, OrcStats::MANA, OrcStats::LEVEL, OrcStats::BASIC_DAMAGE, OrcStats::EXP_GIVEN, OrcStats::FACTION, OrcStats::STATUS) {
 	std::cout << "Orc created" << std::endl;
 }
 
@@ -58,7 +58,7 @@ void Orc::GoBerserk() {
 
 void Orc::OnAttacked(Character* Attacker) {
 	std::cout << ConvertFactionToString(Attacker->GetFaction())
-		<< "is attacking an Orc" << std::endl;
+		<< " is attacking an Orc" << std::endl;
 
 	if (GetHealth() == 10) {
 		GoBerserk();
@@ -66,7 +66,7 @@ void Orc::OnAttacked(Character* Attacker) {
 }
 
 // Dragon class member functions
-Dragon::Dragon() : Character(DragonStats::HEALTH, DragonStats::MANA, DragonStats::LEVEL, DragonStats::BASIC_DAMAGE, DragonStats::EXP, DragonStats::FACTION, DragonStats::STATUS) {
+Dragon::Dragon() : Character(DragonStats::HEALTH, DragonStats::MANA, DragonStats::LEVEL, DragonStats::BASIC_DAMAGE, DragonStats::EXP_GIVEN, DragonStats::FACTION, DragonStats::STATUS) {
 	std::cout << "Dragon created" << std::endl;
 }
 
@@ -76,7 +76,7 @@ void Dragon::DragonRage(Character* Target) {
 
 void Dragon::OnAttacked(Character* Attacker) {
 	std::cout << ConvertFactionToString(Attacker->GetFaction()) 
-		<< "is attacking a Dragon" << std::endl;
+		<< " is attacking a Dragon" << std::endl;
 
 	if((GetHealth() % 20) == 0)	{
 		DragonRage(Attacker);
@@ -85,7 +85,7 @@ void Dragon::OnAttacked(Character* Attacker) {
 }
 
 // Hero class member functions
-Hero::Hero() : Character(HeroStats::HEALTH, HeroStats::MANA, HeroStats::LEVEL, HeroStats::BASIC_DAMAGE, HeroStats::EXP, HeroStats::FACTION, HeroStats::STATUS) {
+Hero::Hero() : Character(HeroStats::HEALTH, HeroStats::MANA, HeroStats::LEVEL, HeroStats::BASIC_DAMAGE, HeroStats::EXP_EARNED, HeroStats::FACTION, HeroStats::STATUS) {
 	std::cout << "Hero created" << std::endl;
 }
 
@@ -105,4 +105,8 @@ void Hero::HerosCalling(Character* Target) {
 
 void Hero::Equip(Weapon* Weapon) {
 
+}
+
+void Hero::Run(Character* Target) {
+	std::cout << "You ran away from the " << ConvertFactionToString(Target->GetFaction()) << std::endl;
 }

@@ -18,7 +18,7 @@ namespace CharacterStats {
         static constexpr int HEALTH = 10;
         static constexpr int MANA = 0;
         static constexpr int LEVEL = 1;
-        static constexpr int EXP = 10;
+        static constexpr int EXP_GIVEN = 10;
         static constexpr int BASIC_DAMAGE = 1;
         static constexpr Faction FACTION = Faction::SLIME;
         static constexpr Status STATUS = Status::ALIVE;
@@ -28,7 +28,7 @@ namespace CharacterStats {
         static constexpr int HEALTH = 150;
         static constexpr int MANA = 60;
         static constexpr int LEVEL = 10;
-        static constexpr int EXP = 100;
+        static constexpr int EXP_GIVEN = 100;
         static constexpr int BASIC_DAMAGE = 6;
         static constexpr Faction FACTION = Faction::ORC;
         static constexpr Status STATUS = Status::ALIVE;
@@ -38,7 +38,7 @@ namespace CharacterStats {
         static constexpr int HEALTH = 250;
         static constexpr int MANA = 150;
         static constexpr int LEVEL = 20;
-        static constexpr int EXP = 300;
+        static constexpr int EXP_GIVEN = 300;
         static constexpr int BASIC_DAMAGE = 10;
         static constexpr Faction FACTION = Faction::DRAGON;
         static constexpr Status STATUS = Status::ALIVE;
@@ -48,7 +48,7 @@ namespace CharacterStats {
         static constexpr int HEALTH = 100;
         static constexpr int MANA = 100;
         static constexpr int LEVEL = 1;
-        static constexpr int EXP = 0;
+        static constexpr int EXP_EARNED = 0;
         static constexpr int BASIC_DAMAGE = 4;
         static constexpr Faction FACTION = Faction::HERO;
         static constexpr Status STATUS = Status::ALIVE;

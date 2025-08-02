@@ -63,4 +63,5 @@ public:
     void OnAttacked(Character* Attacker) override;
     void HerosCalling(Character* Target);
     void Equip(Weapon* Weapon);
+    void Run(Character* Target);
 };

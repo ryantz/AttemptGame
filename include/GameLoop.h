@@ -2,26 +2,17 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 #include "Character.h"
 #include "Weapon.h"
 
-enum class ControlFlag {
-	START,
-	END
-};
-
-struct CharacterList {
-	std::vector<Character> CharacterList; 
-};
-
 class GameLoop {
 public:
-    GameLoop() = default;
-	GameLoop(CharacterList CharacterList);
-
-    void Start(ControlFlag CurrentControlFlag);
+    GameLoop();
+	void Start();
 
 private:
-    ControlFlag mControlFlag;
+	std::unique_ptr<Hero> Player;
+	std::unique_ptr<Character> Enemy;
 };
 
