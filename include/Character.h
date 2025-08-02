@@ -1,26 +1,10 @@
 #pragma once
-
-#include <iostream>
-
-enum class Faction {
-    SLIME,
-    ORC,
-    DRAGON,
-    HUMAN,
-};
-
-enum class Status {
-    ALIVE,
-    CRITICAL,
-    DEAD,
-};
-
-std::string  ConvertFactionToString(Faction Faction);
+#include "CharacterStats.h"
 
 class Character {
 public:
     Character() = default; // for slime
-    Character(int Health, int Mana, int Level, int Exp, Faction Faction, Status mStatus); // for others
+    Character(int Health, int Mana, int Level, int BasicDamage, int Exp, Faction Faction, Status mStatus); // for others
     virtual ~Character() = default; // for polymorphism
 
     virtual void OnAttacked(Character* Attacker);
@@ -50,6 +34,7 @@ protected:
     int mMana{ 0 };
     int mLevel{ 1 };
     int mExp{ 3 };
+    int mBasicDamage;
     Faction mFaction{ Faction::SLIME };
     Status mStatus{ Status::ALIVE };
 };

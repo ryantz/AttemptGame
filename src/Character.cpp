@@ -1,29 +1,12 @@
-#include <iostream>
 #include "../include/Character.h"
 
-// Helper functions
-std::string  ConvertFactionToString(Faction Faction) {
-    switch (Faction) {
-    case Faction::SLIME: 
-        return "Slime";
-    case Faction::ORC:
-        return "Orc";
-    case Faction::DRAGON:
-        return "Dragon";
-    case Faction::HUMAN:
-        return "Human";
-    default:
-        return "Unknown Faction";
-    }
-}
+using OrcStats = CharacterStats::Orc;
+using DragonStats = CharacterStats::Dragon;
+using HeroStats = CharacterStats::Hero;
 
-void Attack(Character* Target) {
-	
-}
-
-// base char
-Character::Character(int Health, int Mana, int Level, int Exp, Faction Faction, Status Status) :
-	mHealth{ Health }, mMana{ Mana }, mLevel{ Level }, mExp{ Exp }, mFaction{ Faction }, mStatus{Status} {
+// base char = slime
+Character::Character(int Health, int Mana, int Level, int Exp, int BasicDamage, Faction Faction, Status Status) :
+	mHealth{ Health }, mMana{ Mana }, mLevel{ Level }, mExp{ Exp }, mBasicDamage{ BasicDamage }, mFaction { Faction }, mStatus{ Status } {
 	std::cout << "Custom char created" << std::endl;
 }
 
@@ -47,11 +30,14 @@ void Character::DealDamage(Character* Target, int DamageDealt) {
 	}
 
 	int ReducedHealth = Target->GetHealth() - DamageDealt;
+
 	if (ReducedHealth <= 0) {
 		Target->SetStatus(Status::DEAD);
-	} else if (ReducedHealth <= 20) {
+	} 
+	else if (ReducedHealth <= 20) {
 		Target->SetStatus(Status::CRITICAL);
-	} else {
+	}
+	else {
 		Target->SetStatus(Status::ALIVE);
 	}
 
@@ -60,7 +46,7 @@ void Character::DealDamage(Character* Target, int DamageDealt) {
 }
 
 // Orc class member functions
-Orc::Orc() : Character(150, 30, 10, 300, Faction::ORC, Status::ALIVE) {
+Orc::Orc() : Character(OrcStats::HEALTH, OrcStats::MANA, OrcStats::LEVEL, OrcStats::BASIC_DAMAGE, OrcStats::EXP, OrcStats::FACTION, OrcStats::STATUS) {
 	std::cout << "Orc created" << std::endl;
 }
 
@@ -80,7 +66,7 @@ void Orc::OnAttacked(Character* Attacker) {
 }
 
 // Dragon class member functions
-Dragon::Dragon() : Character(300, 150, 20, 450, Faction::DRAGON, Status::ALIVE) {
+Dragon::Dragon() : Character(DragonStats::HEALTH, DragonStats::MANA, DragonStats::LEVEL, DragonStats::BASIC_DAMAGE, DragonStats::EXP, DragonStats::FACTION, DragonStats::STATUS) {
 	std::cout << "Dragon created" << std::endl;
 }
 
@@ -99,7 +85,7 @@ void Dragon::OnAttacked(Character* Attacker) {
 }
 
 // Hero class member functions
-Hero::Hero() : Character(100, 100, 1, 0, Faction::HUMAN, Status::ALIVE) {
+Hero::Hero() : Character(HeroStats::HEALTH, HeroStats::MANA, HeroStats::LEVEL, HeroStats::BASIC_DAMAGE, HeroStats::EXP, HeroStats::FACTION, HeroStats::STATUS) {
 	std::cout << "Hero created" << std::endl;
 }
 
