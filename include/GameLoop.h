@@ -1,7 +1,27 @@
-﻿// GameAttempt.h : Include file for standard system include files,
-// or project specific include files.
+﻿#pragma once
 
-#pragma once
+#include <iostream>
+#include <vector>
+#include "Character.h"
+#include "Weapon.h"
 
+enum class ControlFlag {
+	START,
+	END
+};
 
-// TODO: Reference additional headers your program requires here.
+struct CharacterList {
+	std::vector<Character> CharacterList; 
+};
+
+class GameLoop {
+public:
+    GameLoop() = default;
+	GameLoop(CharacterList CharacterList);
+
+    void Start(ControlFlag CurrentControlFlag);
+
+private:
+    ControlFlag mControlFlag;
+};
+

@@ -1,8 +1,11 @@
-﻿#include <iostream>
+﻿#include "../include/GameLoop.h"
 
+GameLoop::GameLoop(CharacterList CharacterList) {
+	std::cout << "Game starting.." << std::endl;
+}
 
-int GameAttempt()
-{
-	std::cout << "Hello CMake." << std::endl;
-	return 0;
+void GameLoop::Start(ControlFlag CurrentControlFlag) {
+	while(CurrentControlFlag == ControlFlag::START){ 
+		std::cout << "Looping" << std::endl;
+	}
 }

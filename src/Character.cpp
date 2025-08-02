@@ -100,5 +100,9 @@ void Hero::OnAttacked(Character* Attacker) {
 
 void Hero::HerosCalling(Character* Target) {
 	SetHealth(150);
-	DealDamage(Target, 12);
+	DealDamage(Target, 13);
+}
+
+void Hero::Equip(Weapon* Weapon) {
+
 }
