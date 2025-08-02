@@ -18,6 +18,15 @@ public:
         return mMana;
     }
 
+    // does this need const if it changes?
+    int GetExp() const {
+        return mExp;
+    }
+
+    int GetBasicDamage() const {
+        return mBasicDamage;
+    }
+    
     Faction GetFaction() const {
         return mFaction;
     }
