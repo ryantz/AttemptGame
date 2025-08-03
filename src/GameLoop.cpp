@@ -8,8 +8,8 @@ void GameLoop::Start() {
 	int EnemyChoice;
 	int PlayerChoice;
 	bool inBattle{true};
-	Character* Enemy; // use unique for auto deletion when out of scope
-
+	Character* Enemy{ nullptr }; 
+	
 	std::cout << "Game starting..." << std::endl;
 
 	Hero Player; // create the player as a Hero
@@ -63,4 +63,8 @@ void GameLoop::Start() {
 				std::cout << "That was not an option shown!" << std::endl;
 		}
 	}
+
+	// free memory
+	delete Enemy;
+	Enemy = nullptr;
 }

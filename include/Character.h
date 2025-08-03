@@ -44,7 +44,7 @@ protected:
     int mMana{ 0 };
     int mLevel{ 1 };
     int mExp{ 3 };
-    int mBasicDamage;
+    int mBasicDamage{ 1 };
     Faction mFaction{ Faction::SLIME };
     Status mStatus{ Status::ALIVE };
 };
@@ -52,6 +52,7 @@ protected:
 class Orc : public Character {
 public:
     Orc();
+    
     
     void OnAttacked(Character* Attacker) override;
     void GoBerserk();

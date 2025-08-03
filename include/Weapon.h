@@ -9,5 +9,11 @@ enum class WeaponTypes {
 };
 
 class Weapon {
-	Weapon(){}
+public:
+	Weapon();
+
+private:
+	int Damage{ 0 };
+	int Durability{ 0 };
+	int Weight{ 0 };
 };
