@@ -43,6 +43,9 @@ void Character::DealDamage(Character* Target, int DamageDealt) {
 
 	Target->SetHealth(ReducedHealth);
 	Target->OnAttacked(this);
+
+	std::cout << ConvertFactionToString(Target->GetFaction()) << " 's Health is now "
+		<< Target->GetHealth() << std::endl;
 }
 
 // Orc class member functions
@@ -99,6 +102,8 @@ void Hero::OnAttacked(Character* Attacker) {
 }
 
 void Hero::HerosCalling(Character* Target) {
+	std::cout << "HERO'S CALLING!" << std::endl;
+
 	SetHealth(150);
 	DealDamage(Target, 13);
 }

@@ -14,7 +14,7 @@ void GameLoop::Start() {
 
 	Hero Player; // create the player as a Hero
 
-	std::cout << "Welcome hero, choose an enemy:\n1) Orc\n2) Dragon\n3) Slime" << std::endl;
+	std::cout << "Welcome hero, choose an enemy:\n1) Orc\n2) Dragon\n3) Slime\n" << std::endl;
 	std::cin >> EnemyChoice;
 
 	// Player's choice on enemy
@@ -38,33 +38,39 @@ void GameLoop::Start() {
 		std::cout << "That was not a choice" << std::endl;
 	}
 
-	std::cout << "Battle!" << std::endl;
+	if(Enemy != nullptr){
+		std::cout << "Battle!" << std::endl;
 
-	while(inBattle) {
-		std::cout << "1) Attack\n2) Use Hero's Calling\n3) Run" << std::endl;
-		std::cin >> PlayerChoice; 
+		while(inBattle) {
+			std::cout << "1) Attack\n2) Run\n" << std::endl;
+			std::cin >> PlayerChoice; 
 
-		switch (PlayerChoice) {
-			case 1: {
-				Player.DealDamage(Enemy, Player.GetBasicDamage());
-				break;
+			switch (PlayerChoice) {
+				case 1: {
+					Player.DealDamage(Enemy, Player.GetBasicDamage());
+					Enemy->DealDamage(&Player, Enemy->GetBasicDamage());
+
+					if (Enemy->GetHealth() <= 0 || Player.GetHealth() <= 0) {
+						inBattle = false;
+					}
+
+					break;
+				}
+				case 2: {
+					Player.Run(Enemy);
+					inBattle = false; // run and break loop
+					std::cout << "Ran away successfully..ending game" << std::endl;
+					break;
+				}
+				default:
+					std::cout << "That was not an option shown!" << std::endl;
 			}
-			case 2: {
-				Player.HerosCalling(Enemy);
-				break;
-			}
-			case 3: {
-				Player.Run(Enemy);
-				inBattle = false; // run and break loop
-				std::cout << "Ran away successfully..ending game" << std::endl;
-				break;
-			}
-			default:
-				std::cout << "That was not an option shown!" << std::endl;
 		}
+
+		// free memory
+		delete Enemy;
+		Enemy = nullptr;
 	}
 
-	// free memory
-	delete Enemy;
-	Enemy = nullptr;
 }
+

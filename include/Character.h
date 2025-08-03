@@ -53,7 +53,6 @@ class Orc : public Character {
 public:
     Orc();
     
-    
     void OnAttacked(Character* Attacker) override;
     void GoBerserk();
 };

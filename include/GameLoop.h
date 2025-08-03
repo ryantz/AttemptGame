@@ -9,6 +9,6 @@
 class GameLoop {
 public:
     GameLoop();
-	void Start();
-};
 
+    void Start();
+};
