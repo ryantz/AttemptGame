@@ -5,9 +5,8 @@ using DragonStats = CharacterStats::Dragon;
 using HeroStats = CharacterStats::Hero;
 
 // base char = slime
-Character::Character(int Health, int Mana, int Level, int Exp, int BasicDamage, Faction Faction, Status Status) :
-	mHealth{ Health }, mMana{ Mana }, mLevel{ Level }, mExp{ Exp }, mBasicDamage{ BasicDamage }, mFaction { Faction }, mStatus{ Status } {
-	std::cout << "Custom char created" << std::endl;
+Character::Character(int Health, int Mana, int Level, int BasicDamage, int Exp, Faction Faction, Status Status) :
+	mHealth{ Health }, mMana{ Mana }, mLevel{ Level }, mBasicDamage{ BasicDamage }, mExp{ Exp }, mFaction { Faction }, mStatus{ Status } {
 }
 
 void Character::OnAttacked(Character* Attacker) {
@@ -43,14 +42,13 @@ void Character::DealDamage(Character* Target, int DamageDealt) {
 
 	Target->SetHealth(ReducedHealth);
 	Target->OnAttacked(this);
-
-	std::cout << ConvertFactionToString(Target->GetFaction()) << " 's Health is now "
+	
+	std::cout << "\n" <<  ConvertFactionToString(Target->GetFaction()) << " 's Health is now "
 		<< Target->GetHealth() << std::endl;
 }
 
 // Orc class member functions
-Orc::Orc() : Character(OrcStats::HEALTH, OrcStats::MANA, OrcStats::LEVEL, OrcStats::BASIC_DAMAGE, OrcStats::EXP_GIVEN, OrcStats::FACTION, OrcStats::STATUS) {
-	std::cout << "Orc created" << std::endl;
+Orc::Orc() : Character(OrcStats::HEALTH, OrcStats::MANA, OrcStats::LEVEL, OrcStats::BASIC_DAMAGE , OrcStats::EXP_GIVEN, OrcStats::FACTION, OrcStats::STATUS) {
 }
 
 void Orc::GoBerserk() {
@@ -63,18 +61,18 @@ void Orc::OnAttacked(Character* Attacker) {
 	std::cout << ConvertFactionToString(Attacker->GetFaction())
 		<< " is attacking an Orc" << std::endl;
 
-	if (GetHealth() == 10) {
+	if (GetHealth() <= 20) {
 		GoBerserk();
 	}
 }
 
 // Dragon class member functions
 Dragon::Dragon() : Character(DragonStats::HEALTH, DragonStats::MANA, DragonStats::LEVEL, DragonStats::BASIC_DAMAGE, DragonStats::EXP_GIVEN, DragonStats::FACTION, DragonStats::STATUS) {
-	std::cout << "Dragon created" << std::endl;
 }
 
 void Dragon::DragonRage(Character* Target) {
 		DealDamage(Target, 35);
+		std::cout << "Dragon is using DragonRage!" << std::endl;
 }
 
 void Dragon::OnAttacked(Character* Attacker) {
@@ -83,13 +81,11 @@ void Dragon::OnAttacked(Character* Attacker) {
 
 	if((GetHealth() % 20) == 0)	{
 		DragonRage(Attacker);
-		std::cout << "Dragon is using DragonRage!" << std::endl;
 	}
 }
 
 // Hero class member functions
-Hero::Hero() : Character(HeroStats::HEALTH, HeroStats::MANA, HeroStats::LEVEL, HeroStats::BASIC_DAMAGE, HeroStats::EXP_EARNED, HeroStats::FACTION, HeroStats::STATUS) {
-	std::cout << "Hero created" << std::endl;
+Hero::Hero() : Character(HeroStats::HEALTH, HeroStats::MANA, HeroStats::LEVEL, HeroStats::BASIC_DAMAGE, HeroStats::EXP_EARNED , HeroStats::FACTION, HeroStats::STATUS) {
 }
 
 void Hero::OnAttacked(Character* Attacker) {
@@ -105,7 +101,7 @@ void Hero::HerosCalling(Character* Target) {
 	std::cout << "HERO'S CALLING!" << std::endl;
 
 	SetHealth(150);
-	DealDamage(Target, 13);
+	DealDamage(Target, 15);
 }
 
 void Hero::Equip(Weapon* Weapon) {
