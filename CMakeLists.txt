@@ -2,6 +2,9 @@
 # project specific logic here.
 #
 cmake_minimum_required (VERSION 3.8)
+#set(CMAKE_CXX_STANDARD 20)
+
+project ("GameAttempt")
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -9,11 +12,8 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
-project ("GameAttempt")
-
 # Add source to this project's executable.
-add_executable (GameAttempt "src/GameLoop.cpp" "include/GameLoop.h" "src/Character.cpp" "src/Weapon.cpp" "src/main.cpp" "src/Inventory.cpp" "include/Weapon.h" "include/Inventory.h" "include/Character.h"   "include/CharacterStats.h" "src/CharacterStats.cpp")
-
+add_executable (GameAttempt "src/GameLoop.cpp" "include/GameLoop.h" "src/Character.cpp" "src/Weapon.cpp" "src/main.cpp" "src/Inventory.cpp" "include/Weapon.h" "include/Inventory.h" "include/Character.h"   "include/CharacterStats.h" "src/CharacterStats.cpp" "include/Random.h" "include/Table.h" "src/Table.cpp")
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET GameAttempt PROPERTY CXX_STANDARD 20)
 endif()

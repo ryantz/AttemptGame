@@ -22,6 +22,7 @@ void Character::SetStatus(Status Status) {
 	mStatus = Status;
 }
 
+// TODO add in mana functionality
 void Character::DealDamage(Character* Target, int DamageDealt) {
 	if (!Target) {
 		std::cout << "Error there is nothing to hit!" << std::endl;

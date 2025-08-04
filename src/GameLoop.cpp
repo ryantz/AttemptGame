@@ -54,10 +54,11 @@ void GameLoop::Start() {
 					std::cout << "\n=====================================\n" << std::endl;
 					Enemy->DealDamage(&Player, Enemy->GetBasicDamage());
 					std::cout << "\n=====================================\n" << std::endl;
-
+					
 					if (Enemy->GetHealth() <= 0 || Player.GetHealth() <= 0) {
 						inBattle = false;
 					}
+					
 					break;
 				}
 				case 2: {
@@ -71,10 +72,8 @@ void GameLoop::Start() {
 			}
 		}
 
-		// free memory
-		delete Enemy;
-		Enemy = nullptr;
 	}
-
+	delete Enemy;
+	std::cout << "Enemy deleted" << std::endl;
 }
 
