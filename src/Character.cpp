@@ -18,6 +18,10 @@ void Character::SetHealth(int Health) {
 	mHealth = Health;
 }
 
+void Character::SetMana(int Mana) {
+	mMana = Mana;
+}
+
 void Character::SetStatus(Status Status) {
 	mStatus = Status;
 }
@@ -52,10 +56,20 @@ void Character::DealDamage(Character* Target, int DamageDealt) {
 Orc::Orc() : Character(OrcStats::HEALTH, OrcStats::MANA, OrcStats::LEVEL, OrcStats::BASIC_DAMAGE , OrcStats::EXP_GIVEN, OrcStats::FACTION, OrcStats::STATUS) {
 }
 
-void Orc::GoBerserk() {
+void Orc::GoBerserk(int ManaRequired) {
+	int CurrentMana = this->GetMana();
+
+	if (CurrentMana >= ManaRequired) {
 		SetHealth(50);
-		std::cout << "Orc is going berserk! It's health is now: "
-			<< GetHealth() << std::endl;
+		CurrentMana -= ManaRequired;
+		SetMana(CurrentMana);
+		std::cout << 
+			std::format("Orc HP is now: {0}\nMana{1}", GetHealth(), GetMana())
+				<< std::endl;
+	}
+	else {
+		std::cout << "Orc cannot use Berserk (out of mana)" << std::endl;
+	}
 }
 
 void Orc::OnAttacked(Character* Attacker) {
@@ -63,7 +77,7 @@ void Orc::OnAttacked(Character* Attacker) {
 		<< " is attacking an Orc" << std::endl;
 
 	if (GetHealth() <= 20) {
-		GoBerserk();
+		GoBerserk(60);
 	}
 }
 
@@ -72,7 +86,7 @@ Dragon::Dragon() : Character(DragonStats::HEALTH, DragonStats::MANA, DragonStats
 }
 
 void Dragon::DragonRage(Character* Target) {
-		DealDamage(Target, 35);
+		DealDamage(Target, 30);
 		std::cout << "Dragon is using DragonRage!" << std::endl;
 }
 
@@ -94,15 +108,23 @@ void Hero::OnAttacked(Character* Attacker) {
 		<< " is attacking a Hero" << std::endl;
 
 	if (GetHealth() == 50) {
-		HerosCalling(Attacker);
+		HerosCalling(Attacker, 100);
 	}
 }
 
-void Hero::HerosCalling(Character* Target) {
-	std::cout << "HERO'S CALLING!" << std::endl;
+void Hero::HerosCalling(Character* Target, int ManaRequired) {
+	int CurrentMana = this->GetMana();
 
-	SetHealth(150);
-	DealDamage(Target, 15);
+	if (CurrentMana >= ManaRequired) {
+		SetHealth(150);
+		DealDamage(Target, 15);
+		CurrentMana -= ManaRequired;
+		SetMana(CurrentMana);
+		std::cout << "HERO'S CALLING!" << std::endl;
+	}
+	else {
+		std::cout << "You cannot use HerosCalling (out of mana)" << std::endl;
+	}
 }
 
 void Hero::Equip(Weapon* Weapon) {

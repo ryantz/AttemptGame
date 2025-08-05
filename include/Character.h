@@ -36,6 +36,7 @@ public:
     }
 
     virtual void SetHealth(int Health);
+    virtual void SetMana(int Mana);
     virtual void SetStatus(Status Status);
     virtual void DealDamage(Character* Target, int DamageDealt);
 
@@ -54,7 +55,7 @@ public:
     Orc();
     
     void OnAttacked(Character* Attacker) override;
-    void GoBerserk();
+    void GoBerserk(int ManaRequired);
 };
 
 class Dragon : public Character {
@@ -70,7 +71,7 @@ public:
     Hero();
 
     void OnAttacked(Character* Attacker) override;
-    void HerosCalling(Character* Target);
+    void HerosCalling(Character* Target, int ManaRequired);
     void Equip(Weapon* Weapon);
     void Run(Character* Target);
 };

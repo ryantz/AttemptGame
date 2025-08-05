@@ -1,4 +1,5 @@
 #include <iostream>
+#include <format>
 
 enum class Faction {
     SLIME,
