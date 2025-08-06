@@ -64,7 +64,7 @@ void Orc::GoBerserk(int ManaRequired) {
 		CurrentMana -= ManaRequired;
 		SetMana(CurrentMana);
 		std::cout << 
-			std::format("Orc HP is now: {0}\nMana{1}", GetHealth(), GetMana())
+			std::format("Orc is going Berserk!\nOrc HP is now: {0}\nMana{1}", GetHealth(), GetMana())
 				<< std::endl;
 	}
 	else {
@@ -73,8 +73,8 @@ void Orc::GoBerserk(int ManaRequired) {
 }
 
 void Orc::OnAttacked(Character* Attacker) {
-	std::cout << ConvertFactionToString(Attacker->GetFaction())
-		<< " is attacking an Orc" << std::endl;
+	//std::cout << ConvertFactionToString(Attacker->GetFaction())
+	//	<< " is attacking an Orc" << std::endl;
 
 	if (GetHealth() <= 20) {
 		GoBerserk(60);
@@ -91,8 +91,8 @@ void Dragon::DragonRage(Character* Target) {
 }
 
 void Dragon::OnAttacked(Character* Attacker) {
-	std::cout << ConvertFactionToString(Attacker->GetFaction()) 
-		<< " is attacking a Dragon" << std::endl;
+	//std::cout << ConvertFactionToString(Attacker->GetFaction()) 
+	//	<< " is attacking a Dragon" << std::endl;
 
 	if((GetHealth() % 20) == 0)	{
 		DragonRage(Attacker);
@@ -104,8 +104,8 @@ Hero::Hero() : Character(HeroStats::HEALTH, HeroStats::MANA, HeroStats::LEVEL, H
 }
 
 void Hero::OnAttacked(Character* Attacker) {
-	std::cout << ConvertFactionToString(Attacker->GetFaction())
-		<< " is attacking a Hero" << std::endl;
+	//std::cout << ConvertFactionToString(Attacker->GetFaction())
+	//	<< " is attacking a Hero" << std::endl;
 
 	if (GetHealth() == 50) {
 		HerosCalling(Attacker, 100);

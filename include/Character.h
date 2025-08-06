@@ -40,7 +40,7 @@ public:
     virtual void SetStatus(Status Status);
     virtual void DealDamage(Character* Target, int DamageDealt);
 
-protected:
+private:
     int mHealth{ 20 };
     int mMana{ 0 };
     int mLevel{ 1 };

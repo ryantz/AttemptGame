@@ -74,6 +74,5 @@ void GameLoop::Start() {
 
 	}
 	delete Enemy;
-	std::cout << "Enemy deleted" << std::endl;
 }
 
