@@ -67,8 +67,44 @@ namespace CharacterStats {
 
 namespace WeaponStats {
     struct Sword {
+        static constexpr int DAMAGE = 5;
+        static constexpr int DURABILITY = 10;
+        static constexpr int WEIGHT = 3;
+        static constexpr float ATTACK_SPEED = 0.3f;
+        static constexpr WeaponType WEAPON_TYPE = WeaponType::SWORD;
+    };
+    struct Spear {
+        static constexpr int DAMAGE = 5;
+        static constexpr int DURABILITY = 10;
+        static constexpr int WEIGHT = 3;
+        static constexpr float ATTACK_SPEED = 0.3f;
+        static constexpr WeaponType WEAPON_TYPE = WeaponType::SPEAR;
+    };
+
+    struct Shield {
+        static constexpr int DAMAGE = 5;
+        static constexpr int DURABILITY = 10;
+        static constexpr int WEIGHT = 3;
+        static constexpr float ATTACK_SPEED = 0.3f;
+        static constexpr WeaponType WEAPON_TYPE = WeaponType::SHIELD;
+    };
+
+    struct Bow{
+        static constexpr int DAMAGE = 5;
+        static constexpr int DURABILITY = 10;
+        static constexpr int WEIGHT = 3;
+        static constexpr float ATTACK_SPEED = 0.3f;
+        static constexpr WeaponType WEAPON_TYPE = WeaponType::BOW;
+    };
+
+    struct Wooden_Stick {
+        static constexpr int DAMAGE = 5;
+        static constexpr int DURABILITY = 10;
+        static constexpr int WEIGHT = 3;
+        static constexpr float ATTACK_SPEED = 0.3f;
+        static constexpr WeaponType WEAPON_TYPE = WeaponType::WOODEN_STICK;
     };
 }
 
-std::string  ConvertFactionToString(Faction Faction);
+std::string ConvertFactionToString(Faction Faction);
 std::string ConvertWeaponTypeToString(WeaponType WeaponType);

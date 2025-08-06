@@ -3,12 +3,11 @@
 #include "Random.h"
 #include "Stats.h"
 
-
-
-
 class Weapon {
 public:
-	Weapon();
+	Weapon() = default;
+	Weapon(int Damage, int Durability, int Weight, float AttackSpeed, WeaponType WeaponType);
+	virtual ~Weapon() = default;
 
 	int GetWeaponDamage() {
 		return mDamage;

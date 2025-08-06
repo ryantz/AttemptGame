@@ -74,4 +74,7 @@ public:
     void HerosCalling(Character* Target, int ManaRequired);
     void Equip(Weapon* Weapon);
     void Run(Character* Target);
+
+private:
+    Weapon EquippedWeapon; // TODO
 };
