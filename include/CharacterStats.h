@@ -1,5 +1,6 @@
-#include <iostream>
+#pragma once
 #include <format>
+#include "Weapon.h"
 
 enum class Faction {
     SLIME,
@@ -57,3 +58,4 @@ namespace CharacterStats {
 }
 
 std::string  ConvertFactionToString(Faction Faction);
+std::string ConvertWeaponTypeToString(WeaponType WeaponType);

@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <random>
 
 /*
@@ -8,28 +9,14 @@
 * Use: Crit chance? Dodge chance?
 */
 namespace Random {
-	std::random_device Seeder;
-	unsigned int seed{ Seeder() };
-	std::mt19937 Engine{ seed };
 
-	void PrintSeed() {
-		std::cout << "Seed: " << seed << std::endl;
-	}
+    void PrintSeed();
 
-	// to replicate randomness
-	void Reseed(unsigned int PrevSeed) {
-		seed = PrevSeed;
-		Engine.seed(PrevSeed);
-	}
+    void Reseed(unsigned int PrevSeed);
 
-	int Integer(int min, int max) {
-		std::uniform_int_distribution get{ min, max };
-		return get(Engine);
-	}
+    int Integer(int min, int max);
 
-	// if the random prob generated is less than specified, do smth (true)
-	bool Bool(float Probability) {
-		std::uniform_real_distribution get{ 0.0 , 1.0 };
-		return Probability > get(Engine);
-	}
+    // if the random prob generated is less than specified, do smth (true)
+    bool Bool(float Probability);
 }
+

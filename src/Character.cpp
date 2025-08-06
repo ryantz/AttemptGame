@@ -1,4 +1,5 @@
 #include "../include/Character.h"
+#include <format>
 
 using OrcStats = CharacterStats::Orc;
 using DragonStats = CharacterStats::Dragon;
@@ -128,7 +129,7 @@ void Hero::HerosCalling(Character* Target, int ManaRequired) {
 }
 
 void Hero::Equip(Weapon* Weapon) {
-
+	std::cout << std::format("Character is now using {}" , ConvertWeaponTypeToString(Weapon->GetWeaponType())) << std::endl;
 }
 
 void Hero::Run(Character* Target) {
