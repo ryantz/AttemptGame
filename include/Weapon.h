@@ -1,15 +1,10 @@
 #pragma once
 #include <iostream>
 #include "Random.h"
+#include "Stats.h"
 
 
-enum class WeaponType {
-	SWORD,
-	SPEAR,
-	SHIELD,
-	BOW,
-	WOODEN_STICK,
-};
+
 
 class Weapon {
 public:

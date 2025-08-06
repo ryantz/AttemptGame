@@ -1,4 +1,4 @@
-#include "../include/CharacterStats.h"
+#include "../include/Stats.h"
 
 // Helper functions
 std::string  ConvertFactionToString(const Faction Faction) {

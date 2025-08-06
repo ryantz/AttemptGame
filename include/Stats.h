@@ -15,6 +15,14 @@ enum class Status {
     DEAD,
 };
 
+enum class WeaponType {
+	SWORD,
+	SPEAR,
+	SHIELD,
+	BOW,
+	WOODEN_STICK,
+};
+
 namespace CharacterStats {
     struct Slime {
         static constexpr int HEALTH = 10;
@@ -34,7 +42,7 @@ namespace CharacterStats {
         static constexpr int BASIC_DAMAGE = 5;
         static constexpr Faction FACTION = Faction::ORC;
         static constexpr Status STATUS = Status::ALIVE;
-};
+    };
 
     struct Dragon {
         static constexpr int HEALTH = 250;
@@ -44,7 +52,7 @@ namespace CharacterStats {
         static constexpr int BASIC_DAMAGE = 8;
         static constexpr Faction FACTION = Faction::DRAGON;
         static constexpr Status STATUS = Status::ALIVE;
-};
+    };
 
     struct Hero {
         static constexpr int HEALTH = 100;
@@ -54,7 +62,12 @@ namespace CharacterStats {
         static constexpr int BASIC_DAMAGE = 10;
         static constexpr Faction FACTION = Faction::HERO;
         static constexpr Status STATUS = Status::ALIVE;
-};
+    };
+}
+
+namespace WeaponStats {
+    struct Sword {
+    };
 }
 
 std::string  ConvertFactionToString(Faction Faction);

@@ -1,5 +1,5 @@
 #pragma once
-#include "CharacterStats.h"
+#include "Stats.h"
 #include "Weapon.h"
 
 class Character {
